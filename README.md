@@ -40,7 +40,7 @@ rm -rf achievement activity alsa aspectframe bitly bugreport change_account comm
 
 # bundler で gem をインストール
 cd ../..
-GEM_HOME=src/main/resource/gems/vendor/gem_home GEM_PATH=../../../../../src/main/resource/gems/vendor/gem_home java -jar ../../../../../dependencies/jruby-complete-9.0.3.0.jar -S bundle install --path=../../gems/vendor/
+GEM_HOME=../../../../../src/main/resource/gems/vendor/gem_home GEM_PATH=../../../../../src/main/resource/gems/vendor/gem_home java -jar ../../../../../dependencies/jruby-complete-9.0.3.0.jar -S bundle install --path=../../gems/vendor/
 
 # 実行
 cd ../../../../..
