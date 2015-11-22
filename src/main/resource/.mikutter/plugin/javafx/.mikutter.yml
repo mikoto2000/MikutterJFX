@@ -1,0 +1,9 @@
+---
+slug: :javafx
+depends:
+  mikutter: 3.2.9
+  plugin: []
+version: '1.0'
+author: mikoto2000
+name: OASIZ JavaFX
+description: JavaFX を使用した GUI を提供する(JRuby で実行する必要がある)

@@ -1,0 +1,10 @@
+.classpath
+.gradle
+build
+src/main/resource/gems
+src/main/resource/script
+src/main/resource/.mikutter/cache
+src/main/resource/.mikutter/log
+src/main/resource/.mikutter/settings
+src/main/resource/.mikutter/tmp
+src/main/resource/.mikutter/plugin
