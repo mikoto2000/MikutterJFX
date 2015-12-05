@@ -2,7 +2,6 @@ package jp.dip.oyasirazu.mikutterj;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -26,9 +25,8 @@ public class TimelineCell extends ListCell<Message> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/TimelineCell.fxml"));
             Pane root = loader.load();
             TimelineCellController c = loader.getController();
-            Image image = new Image(item.getIcon());
-            c.icon.setImage(image);
-            c.text.setText(String.format("【%s】%s\n", item.getScreenName(), item.getMessage()));
+            c.setImage(item.getIcon());
+            c.setText(String.format("【%s】%s\n", item.getScreenName(), item.getMessage()));
             setGraphic(root);
         } catch (Exception e) {
             e.printStackTrace();
