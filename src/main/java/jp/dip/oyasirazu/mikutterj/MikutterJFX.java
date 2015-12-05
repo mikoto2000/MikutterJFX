@@ -36,8 +36,8 @@ public class MikutterJFX extends Application {
     // Mikutter スクリプトパス
     private final static String SCRIPT_PATH = "./src/main/resource/script/mikutter/mikutter.rb";
 
-    // Mikutter プラグインパス
-    private final static String PLUGIN_PATH = "./src/main/resource/.mikutter";
+    // Mikutter confroot パス
+    private final static String CONF_ROOT_PATH = "./src/main/resource/.mikutter";
 
     // Mikutter の gems パス
     private final static String GEMS_PATH = "./src/main/resource/gems/vendor/jruby/2.2.0/gems";
@@ -62,7 +62,7 @@ public class MikutterJFX extends Application {
         Ruby ruby = Ruby.newInstance(config);
 
         // コマンドライン引数を無理やり設定して confroot を設定
-        ruby.evalScriptlet("ARGV.replace [" + "'--confroot=" + PLUGIN_PATH + "']");
+        ruby.evalScriptlet("ARGV.replace [" + "'--confroot=" + CONF_ROOT_PATH + "']");
 
         // controller, logger を Ruby のグローバル変数として定義、
         IRubyObject rController = JavaUtil.convertJavaToRuby(ruby, controller);

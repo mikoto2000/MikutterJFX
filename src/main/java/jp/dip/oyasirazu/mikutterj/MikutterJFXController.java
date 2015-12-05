@@ -21,13 +21,15 @@ import org.slf4j.LoggerFactory;
 public class MikutterJFXController implements Initializable {
 
     private Stage rootStage;
-    @FXML ListView<String> homeTimeline;
+    @FXML ListView<Message> homeTimeline;
 
     private static Logger logger = LoggerFactory.getLogger(MikutterJFXController.class);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        homeTimeline.setCellFactory((list) -> {
+            return new TimelineCell();
+        });
     }
 
     /**
@@ -51,7 +53,7 @@ public class MikutterJFXController implements Initializable {
     /**
      * home timeline にメッセージを追加する。
      */
-    public void addMessage(String message) {
-        homeTimeline.getItems().add(message);
+    public void addMessage(String icon, String screenName, String message) {
+        homeTimeline.getItems().add(new Message(icon, screenName, message));
     }
 }
