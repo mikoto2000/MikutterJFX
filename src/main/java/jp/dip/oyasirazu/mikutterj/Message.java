@@ -12,6 +12,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Message {
     @FXML private String icon;
+    @FXML private String name;
     @FXML private String screenName;
     @FXML private String message;
 }

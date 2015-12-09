@@ -53,7 +53,7 @@ public class MikutterJFXController implements Initializable {
     /**
      * home timeline にメッセージを追加する。
      */
-    public void addMessage(String icon, String screenName, String message) {
-        homeTimeline.getItems().add(new Message(icon, screenName, message));
+    public void addMessage(String icon, String name, String screenName, String message) {
+        homeTimeline.getItems().add(new Message(icon, name, screenName, message));
     }
 }

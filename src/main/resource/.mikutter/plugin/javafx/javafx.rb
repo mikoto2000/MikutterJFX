@@ -12,7 +12,8 @@ Plugin.create(:javafx) do
         sorted_message.each do |message|
             message_body = message.body.gsub(/\n/, "\n\t")
             $logger.trace "add message 【{}】{}.", message.user, message_body
-            $controller.add_message message.user[:profile_image_url], message.user.to_s, message_body
+            $logger.trace "user : {},{}.", message.user[:name], message.user[:screen_name]
+            $controller.add_message message.user[:profile_image_url], message.user[:name], message.user[:screen_name], message_body
         end
     end
 

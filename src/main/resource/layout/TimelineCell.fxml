@@ -9,9 +9,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.FXCollections?>
 
-<HBox fx:id="root" xmlns="http://javafx.com/javafx"
+<!-- セル -->
+<VBox fx:id="root" xmlns="http://javafx.com/javafx"
     xmlns:fx="http://javafx.com/fxml"
     fx:controller="jp.dip.oyasirazu.mikutterj.TimelineCellController">
-    <ImageView fx:id="icon" />
-    <Text fx:id="text" />
-</HBox>
+
+    <!-- セル -->
+    <HBox fx:id="main">
+        <ImageView fx:id="icon" />
+        <VBox fx:id="main">
+            <HBox fx:id="userInfo">
+                <Text fx:id="name" />
+                <Text text=" : " />
+                <Text fx:id="screenName" />
+            </HBox>
+            <Text fx:id="message" />
+        </VBox>
+    </HBox>
+
+    <!-- 画像とか -->
+    <VBox fx:id="extension">
+    </VBox>
+</VBox>

@@ -12,13 +12,23 @@ import lombok.Data;
  */
 public class TimelineCellController {
     @FXML public ImageView icon;
-    @FXML public Text text;
+    @FXML public Text name;
+    @FXML public Text screenName;
+    @FXML public Text message;
 
     public void setImage(String image) {
         icon.setImage(new Image(image));
     }
 
-    public void setText(String text) {
-        this.text.setText(text);
+    public void setName(String name) {
+        this.name.setText(name);
+    }
+
+    public void setScreenName(String screenName) {
+        this.screenName.setText(screenName);
+    }
+
+    public void setMessage(String message) {
+        this.message.setText(message);
     }
 }
