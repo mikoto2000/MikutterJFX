@@ -25,10 +25,7 @@ public class TimelineCell extends ListCell<Message> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/TimelineCell.fxml"));
             Pane root = loader.load();
             TimelineCellController c = loader.getController();
-            c.setImage(item.getIcon());
-            c.setName(item.getName());
-            c.setScreenName(item.getScreenName());
-            c.setMessage(item.getMessage());
+            c.setMessage(item);
             setGraphic(root);
         } catch (Exception e) {
             e.printStackTrace();

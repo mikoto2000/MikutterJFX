@@ -16,19 +16,10 @@ public class TimelineCellController {
     @FXML public Text screenName;
     @FXML public Text message;
 
-    public void setImage(String image) {
-        icon.setImage(new Image(image));
-    }
-
-    public void setName(String name) {
-        this.name.setText(name);
-    }
-
-    public void setScreenName(String screenName) {
-        this.screenName.setText(screenName);
-    }
-
-    public void setMessage(String message) {
-        this.message.setText(message);
+    public void setMessage(Message message) {
+        icon.setImage(new Image(message.getIcon()));
+        name.setText(message.getName());
+        screenName.setText(message.getScreenName());
+        this.message.setText(message.getMessage());
     }
 }
