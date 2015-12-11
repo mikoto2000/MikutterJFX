@@ -12,6 +12,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import org.jruby.RubySymbol;
+import org.jruby.runtime.builtin.IRubyObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,7 +55,29 @@ public class MikutterJFXController implements Initializable {
     /**
      * home timeline にメッセージを追加する。
      */
-    public void addMessage(String icon, String name, String screenName, String message) {
-        homeTimeline.getItems().add(new Message(icon, name, screenName, message));
+    public void addMessage(IRubyObject message) {
+        IRubyObject user = callMethod(message, "user");
+
+        homeTimeline.getItems().add(
+                new Message(getValue(user, "profile_image_url").toString(),
+                    getValue(user, "idname").toString(),
+                    getValue(user, "name").toString(),
+                    callMethod(message, "to_show").toString()));
+    }
+
+    /**
+     * 引数なしの ruby メソッドを呼び出す。
+     */
+    private IRubyObject callMethod(IRubyObject object, String methodName) {
+        return object.callMethod(object.getRuntime().getCurrentContext(), methodName);
+    }
+
+    /**
+     * get メソッドを呼び出す。
+     *
+     * ruby でいう object[:key] に対応する処理らしい。
+     */
+    private IRubyObject getValue(IRubyObject object, String key) {
+        return object.callMethod(object.getRuntime().getCurrentContext(), "get", RubySymbol.newSymbol(object.getRuntime(), key));
     }
 }

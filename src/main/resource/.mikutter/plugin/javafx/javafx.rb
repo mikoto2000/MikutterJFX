@@ -13,7 +13,7 @@ Plugin.create(:javafx) do
             message_body = message.body.gsub(/\n/, "\n\t")
             $logger.trace "add message 【{}】{}.", message.user, message_body
             $logger.trace "user : {},{}.", message.user[:name], message.user[:screen_name]
-            $controller.add_message message.user[:profile_image_url], message.user[:name], message.user[:screen_name], message_body
+            $controller.add_message message
         end
     end
 
