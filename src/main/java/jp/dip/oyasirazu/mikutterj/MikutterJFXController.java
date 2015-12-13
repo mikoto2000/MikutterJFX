@@ -55,14 +55,18 @@ public class MikutterJFXController implements Initializable {
     /**
      * home timeline にメッセージを追加する。
      */
-    public void addMessage(IRubyObject message) {
+    public void addMessage(IRubyObject message, String[] media_urls) {
         IRubyObject user = callMethod(message, "user");
 
         homeTimeline.getItems().add(
                 new Message(getValue(user, "profile_image_url").toString(),
                     getValue(user, "idname").toString(),
                     getValue(user, "name").toString(),
-                    callMethod(message, "to_show").toString()));
+                    callMethod(message, "to_show").toString(),
+                    media_urls[0],
+                    media_urls[1],
+                    media_urls[2],
+                    media_urls[3]));
     }
 
     /**

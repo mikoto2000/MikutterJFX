@@ -13,7 +13,22 @@ Plugin.create(:javafx) do
             message_body = message.body.gsub(/\n/, "\n\t")
             $logger.trace "add message 【{}】{}.", message.user, message_body
             $logger.trace "user : {},{}.", message.user[:name], message.user[:screen_name]
-            $controller.add_message message
+
+            # media_url を抜き出して、長さ 4 の配列を作成する。
+            urls = message.entity.select { |e|
+                e.has_key? :media_url
+            }.map{ |e|
+                e[:media_url]
+            }
+
+            urls.fill(0,4) { |i|
+                unless urls[i] == nil
+                    urls[i]
+                else
+                    ""
+                end
+            }
+            $controller.add_message(message, urls)
         end
     end
 
