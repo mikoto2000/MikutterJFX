@@ -28,19 +28,29 @@ public class TimelineCellController {
         this.message.setText(message.getMessage());
 
         if (!message.getMedia1().isEmpty()) {
-            media1.setImage(new Image(message.getMedia1()));
+            media1.setImage(new Image(message.getMedia1(), 100.0, 100.0, true, true, true));
         }
 
         if (!message.getMedia2().isEmpty()) {
-            media2.setImage(new Image(message.getMedia2()));
+            media2.setImage(new Image(message.getMedia2(), 100.0, 100.0, true, true, true));
         }
 
         if (!message.getMedia3().isEmpty()) {
-            media3.setImage(new Image(message.getMedia3()));
+            media3.setImage(new Image(message.getMedia3(), 100.0, 100.0, true, true, true));
         }
 
         if (!message.getMedia4().isEmpty()) {
-            media4.setImage(new Image(message.getMedia4()));
+            media4.setImage(new Image(message.getMedia4(), 100.0, 100.0, true, true, true));
         }
+    }
+
+    /**
+     * メッセージの横幅バインディング設定。
+     *
+     * TODO: スクロールバーのサイズを取得できないものか...。
+     */
+    public void setBinding(javafx.scene.control.Control c) {
+        message.wrappingWidthProperty().bind(
+                c.widthProperty().subtract(icon.getImage().getWidth() + 30));
     }
 }

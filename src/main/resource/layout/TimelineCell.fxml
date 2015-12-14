@@ -29,12 +29,12 @@
 
     <!-- 画像とか -->
     <VBox fx:id="extension">
-        <HBox fx:id="main">
+        <GridPane fx:id="images" alignment="CENTER" hgap="8" vgap="8">
             <!-- TODO: リスト化的なことしたい -->
             <ImageView fx:id="media1" />
             <ImageView fx:id="media2" />
             <ImageView fx:id="media3" />
             <ImageView fx:id="media4" />
-        </HBox>
+        </GridPane>
     </VBox>
 </VBox>

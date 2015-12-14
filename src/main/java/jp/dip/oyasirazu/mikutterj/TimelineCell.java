@@ -26,6 +26,7 @@ public class TimelineCell extends ListCell<Message> {
             Pane root = loader.load();
             TimelineCellController c = loader.getController();
             c.setMessage(item);
+            c.setBinding(getListView());
             setGraphic(root);
         } catch (Exception e) {
             e.printStackTrace();
