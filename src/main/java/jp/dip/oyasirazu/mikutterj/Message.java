@@ -11,13 +11,13 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Message {
-    @FXML private String icon;
-    @FXML private String name;
-    @FXML private String screenName;
-    @FXML private String message;
+    private String icon;
+    private String name;
+    private String screenName;
+    private String message;
     // TODO: リスト化的なことがしたい
-    @FXML private String media1;
-    @FXML private String media2;
-    @FXML private String media3;
-    @FXML private String media4;
+    private String media1;
+    private String media2;
+    private String media3;
+    private String media4;
 }
