@@ -4,14 +4,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import org.jruby.RubyString;
 import org.jruby.RubySymbol;
 import org.jruby.runtime.builtin.IRubyObject;
 import org.slf4j.Logger;
@@ -23,6 +22,9 @@ import org.slf4j.LoggerFactory;
 public class MikutterJFXController implements Initializable {
 
     private Stage rootStage;
+    private IRubyObject service;
+
+    @FXML PostBoxController postboxController;
     @FXML ListView<Message> homeTimeline;
 
     private static Logger logger = LoggerFactory.getLogger(MikutterJFXController.class);
@@ -50,6 +52,13 @@ public class MikutterJFXController implements Initializable {
             rootStage.getIcons().add(new Image("file:" + iconPath));
             rootStage.show();
         });
+    }
+
+    public void setService(IRubyObject service) {
+        logger.debug("start setService.");
+        this.service = service;
+        postboxController.setService(service);
+        logger.debug("end setService.");
     }
 
     /**

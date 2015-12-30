@@ -11,7 +11,7 @@
     xmlns:fx="http://javafx.com/fxml"
     fx:controller="jp.dip.oyasirazu.mikutterj.MikutterJFXController">
     <top>
-        <Label text="home timeline." />
+        <fx:include fx:id="postbox" source="PostBox.fxml"/>
     </top>
     <center>
         <ListView fx:id="homeTimeline">

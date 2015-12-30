@@ -4,6 +4,7 @@ require 'java'
 Plugin.create(:javafx) do
     on_boot do
         $logger.debug "start on_boot in javafx."
+        $controller.set_plugin self
         $logger.debug "end on_boot in javafx."
     end
 
@@ -37,5 +38,11 @@ Plugin.create(:javafx) do
         $logger.debug "start on_gui_window_change_icon in javafx."
         $controller.set_icon icon
         $logger.debug "end on_gui_window_change_icon in javafx."
+    end
+
+    def post(message)
+        $logger.debug "start post in ruby."
+        Service.primary.post({message: message})
+        $logger.debug "start post in ruby."
     end
 end

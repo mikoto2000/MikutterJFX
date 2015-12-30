@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language javascript?>
+<?import java.lang.*?>
+<?import java.net.URL ?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<BorderPane xmlns="http://javafx.com/javafx"
+    xmlns:fx="http://javafx.com/fxml"
+    fx:controller="jp.dip.oyasirazu.mikutterj.PostBoxController">
+    <center>
+        <TextField fx:id="postbox" promptText="ツイートを入力" />
+    </center>
+    <right>
+        <Button fx:id="send" text="Send" />
+    </right>
+</BorderPane>
