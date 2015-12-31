@@ -4,7 +4,7 @@ require 'java'
 Plugin.create(:javafx) do
     on_boot do
         $logger.debug "start on_boot in javafx."
-        $controller.set_plugin self
+        $controller.set_service self
         $logger.debug "end on_boot in javafx."
     end
 
