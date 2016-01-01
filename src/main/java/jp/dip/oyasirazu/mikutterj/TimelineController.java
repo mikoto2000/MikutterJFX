@@ -30,13 +30,6 @@ public class TimelineController implements Initializable {
     private Application application;
 
     /**
-     * サービス。
-     *
-     * 使われてないすねこれ...。
-     */
-    private IRubyObject service;
-
-    /**
      * ホームタイムライン。
      */
     @FXML ListView<Message> homeTimeline;
