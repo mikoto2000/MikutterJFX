@@ -19,26 +19,26 @@ import org.slf4j.LoggerFactory;
 public class TimelineCellController {
 
     /** ユーザーアイコン */
-    @FXML public ImageView icon;
+    @FXML private ImageView icon;
 
     /** ユーザー名 */
-    @FXML public Text name;
+    @FXML private Text name;
 
     /** スクリーンネーム */
-    @FXML public Text screenName;
+    @FXML private Text screenName;
 
     /** メッセージ本文 */
-    @FXML public Text message;
+    @FXML private Text message;
 
     // TODO: リスト化的なことがしたい
     /** 添付画像その 1 */
-    @FXML public ImageView media1;
+    @FXML private ImageView media1;
     /** 添付画像その 2 */
-    @FXML public ImageView media2;
+    @FXML private ImageView media2;
     /** 添付画像その 3 */
-    @FXML public ImageView media3;
+    @FXML private ImageView media3;
     /** 添付画像その 4 */
-    @FXML public ImageView media4;
+    @FXML private ImageView media4;
 
     /** デフォルトブラウザで開くために使う Application */
     @Setter private Application application;

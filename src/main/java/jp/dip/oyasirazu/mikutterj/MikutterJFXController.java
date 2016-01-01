@@ -45,10 +45,10 @@ public class MikutterJFXController implements Initializable {
     private IRubyObject service;
 
     /** PostBox */
-    @FXML PostBoxController postboxController;
+    @FXML private PostBoxController postboxController;
 
     /** ホームタイムライン */
-    @FXML TimelineController homeTimelineController;
+    @FXML private TimelineController homeTimelineController;
 
     private static Logger logger = LoggerFactory.getLogger(MikutterJFXController.class);
 
