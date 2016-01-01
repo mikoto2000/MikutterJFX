@@ -8,6 +8,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * TimelineCell
  */
@@ -15,15 +18,24 @@ public class TimelineCell extends ListCell<Message> {
 
     private Application application;
 
-    public TimelineCell() {}
+    private static Logger logger = LoggerFactory.getLogger(TimelineCell.class);
+
+    public TimelineCell() {
+        logger.debug("start TimelineCell constructor.");
+        logger.debug("end TimelineCell constructor.");
+    }
 
     public TimelineCell(Application application) {
+        logger.debug("start TimelineCell constructor with application.");
         this.application = application;
+        logger.debug("end TimelineCell constructor with application.");
     }
 
     @Override
     public void updateItem(Message item, boolean isEmpty) {
         super.updateItem(item, isEmpty);
+
+        logger.debug("start updateItem.");
         if (isEmpty || item == null) {
             Pane p = new Pane();
             setGraphic(p);
@@ -42,6 +54,8 @@ public class TimelineCell extends ListCell<Message> {
             e.printStackTrace();
             System.out.println("layout load erroe!");
         }
+
+        logger.debug("end updateItem.");
 
         return;
     }

@@ -37,6 +37,8 @@ public class TimelineCellController {
     private static Logger logger = LoggerFactory.getLogger(TimelineCellController.class);
 
     public void setMessage(Message message) {
+        logger.debug("start setMessage");
+
         icon.setImage(new Image(message.getIcon()));
         name.setText(message.getName());
         screenName.setText(message.getScreenName());
@@ -61,6 +63,8 @@ public class TimelineCellController {
             media4.setImage(new Image(message.getMedia4(), 100.0, 100.0, true, true, true));
             media4Url = message.getMedia4();
         }
+
+        logger.debug("end setMessage");
     }
 
     /**
@@ -69,8 +73,10 @@ public class TimelineCellController {
      * TODO: スクロールバーのサイズを取得できないものか...。
      */
     public void setBinding(javafx.scene.control.Control c) {
+        logger.debug("start setBinding");
         message.wrappingWidthProperty().bind(
                 c.widthProperty().subtract(icon.getImage().getWidth() + 30));
+        logger.debug("end setBinding");
     }
 
     @FXML

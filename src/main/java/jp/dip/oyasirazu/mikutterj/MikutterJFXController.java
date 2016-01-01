@@ -27,22 +27,22 @@ public class MikutterJFXController implements Initializable {
     private IRubyObject service;
 
     @FXML PostBoxController postboxController;
-    @FXML ListView<Message> homeTimeline;
+    @FXML TimelineController homeTimelineController;
 
     private static Logger logger = LoggerFactory.getLogger(MikutterJFXController.class);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        homeTimeline.setCellFactory((list) -> {
-            return new TimelineCell();
-        });
+        logger.debug("start MikutterJFXController initialize.");
     }
 
     /**
      * ルートの Stage を設定する。
      */
     public void setRootStage(Stage stage) {
+        logger.debug("start setRootStage.");
         this.rootStage = stage;
+        logger.debug("end setRootStage.");
     }
 
     /**
@@ -51,9 +51,7 @@ public class MikutterJFXController implements Initializable {
     public void setApplication(Application application) {
         logger.debug("start setApplication.");
         this.application = application;
-        homeTimeline.setCellFactory((list) -> {
-            return new TimelineCell(application);
-        });
+        homeTimelineController.setApplication(application);
         logger.debug("end setApplication.");
     }
 
@@ -62,10 +60,12 @@ public class MikutterJFXController implements Initializable {
      * アイコン設定が終わったら、ウィンドウを表示する。
      */
     public void setIcon(String iconPath) {
+        logger.debug("start setIcon.");
         Platform.runLater(() -> {
             rootStage.getIcons().add(new Image("file:" + iconPath));
             rootStage.show();
         });
+        logger.debug("end setIcon.");
     }
 
     public void setService(IRubyObject service) {
@@ -79,32 +79,9 @@ public class MikutterJFXController implements Initializable {
      * home timeline にメッセージを追加する。
      */
     public void addMessage(IRubyObject message, String[] media_urls) {
-        IRubyObject user = callMethod(message, "user");
+        logger.debug("start addMessage.");
 
-        homeTimeline.getItems().add(
-                new Message(getValue(user, "profile_image_url").toString(),
-                    getValue(user, "idname").toString(),
-                    getValue(user, "name").toString(),
-                    callMethod(message, "to_show").toString(),
-                    media_urls[0],
-                    media_urls[1],
-                    media_urls[2],
-                    media_urls[3]));
-    }
-
-    /**
-     * 引数なしの ruby メソッドを呼び出す。
-     */
-    private IRubyObject callMethod(IRubyObject object, String methodName) {
-        return object.callMethod(object.getRuntime().getCurrentContext(), methodName);
-    }
-
-    /**
-     * get メソッドを呼び出す。
-     *
-     * ruby でいう object[:key] に対応する処理らしい。
-     */
-    private IRubyObject getValue(IRubyObject object, String key) {
-        return object.callMethod(object.getRuntime().getCurrentContext(), "get", RubySymbol.newSymbol(object.getRuntime(), key));
+        homeTimelineController.addMessage(message, media_urls);
+        logger.debug("end addMessage.");
     }
 }

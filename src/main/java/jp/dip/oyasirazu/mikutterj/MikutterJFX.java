@@ -85,6 +85,8 @@ public class MikutterJFX extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        logger.debug("start MikutterJFX.");
+
         // ウィンドウの x ボタンを押したときの挙動を設定。
         // JavaFX を exit してプログラム自体も終了する
         stage.setOnCloseRequest(event -> {

@@ -9,11 +9,12 @@
 <?import javafx.collections.FXCollections?>
 <BorderPane xmlns="http://javafx.com/javafx"
     xmlns:fx="http://javafx.com/fxml"
-    fx:controller="jp.dip.oyasirazu.mikutterj.MikutterJFXController">
-    <top>
-        <fx:include fx:id="postbox" source="PostBox.fxml"/>
-    </top>
+    fx:controller="jp.dip.oyasirazu.mikutterj.TimelineController">
     <center>
-        <fx:include fx:id="homeTimeline" source="Timeline.fxml"/>
+        <ListView fx:id="homeTimeline">
+            <items>
+                <FXCollections fx:factory="observableArrayList" />
+            </items>
+        </ListView>
     </center>
 </BorderPane>
