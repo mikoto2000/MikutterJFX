@@ -22,8 +22,17 @@ import org.slf4j.LoggerFactory;
  */
 public class PostBoxController implements Initializable {
 
+    /** ツイート入力欄 */
     @FXML private TextField postbox;
+
+    /** 投稿ボタン */
     @FXML private Button send;
+
+    /**
+     * サービス。
+     *
+     * ツイート投稿に使用する。
+     */
     private IRubyObject service;
 
     private static Logger logger = LoggerFactory.getLogger(PostBoxController.class);
@@ -36,6 +45,9 @@ public class PostBoxController implements Initializable {
         logger.debug("end initialize.");
     }
 
+    /**
+     * ツイートを投稿する。
+     */
     public void post(String message) {
         logger.debug("start post.");
         service.callMethod(
@@ -44,6 +56,9 @@ public class PostBoxController implements Initializable {
         logger.debug("end post.");
     }
 
+    /**
+     * サービスを設定する。
+     */
     public void setService(IRubyObject service) {
         logger.debug("start setService.");
         this.service = service;

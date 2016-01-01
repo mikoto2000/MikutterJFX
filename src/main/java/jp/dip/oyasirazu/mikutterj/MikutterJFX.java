@@ -100,7 +100,13 @@ public class MikutterJFX extends Application {
 
         // ListView に設定した ObservableList を取得する。
         controller = loader.getController();
+
+        // イベント処理に必要なので、
+        // Application クラス(this) をコントローラーに渡す。
         controller.setApplication(this);
+
+        // アイコン設定とかに必要なので、
+        // コントローラーに渡しておく。
         controller.setRootStage(stage);
 
         // 適当にウィンドウ設定
@@ -116,7 +122,8 @@ public class MikutterJFX extends Application {
         final Path gemPath = Paths.get(gemPathStr);
         final List<String> loadPaths = new ArrayList<>();
 
-        // 
+        // ruby gems のライブラリディレクトリ(この呼び方で良いのか？) を
+        // 探してリストに詰め込む。
         Files.walkFileTree(gemPath, new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult preVisitDirectory(Path file, BasicFileAttributes attrs) throws IOException {

@@ -22,9 +22,23 @@ import org.slf4j.LoggerFactory;
  */
 public class TimelineController implements Initializable {
 
+    /**
+     * アプリケーション。
+     *
+     * 画像をデフォルトブラウザで開くために使われてます。
+     */
     private Application application;
+
+    /**
+     * サービス。
+     *
+     * 使われてないすねこれ...。
+     */
     private IRubyObject service;
 
+    /**
+     * ホームタイムライン。
+     */
     @FXML ListView<Message> homeTimeline;
 
     private static Logger logger = LoggerFactory.getLogger(MikutterJFXController.class);

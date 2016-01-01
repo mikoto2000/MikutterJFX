@@ -22,11 +22,32 @@ import org.slf4j.LoggerFactory;
  */
 public class MikutterJFXController implements Initializable {
 
+    /**
+     * アプリケーション。
+     *
+     * タイムラインに渡される。<br />
+     * デフォルトブラウザで開くときに使われてます。
+     */
     private Application application;
+
+    /**
+     * ルートステージ。
+     *
+     * アイコン設定に使われる。
+     */
     private Stage rootStage;
+
+    /**
+     * サービス。
+     *
+     * mikutter の機能を呼び出すために使われてます。
+     */
     private IRubyObject service;
 
+    /** PostBox */
     @FXML PostBoxController postboxController;
+
+    /** ホームタイムライン */
     @FXML TimelineController homeTimelineController;
 
     private static Logger logger = LoggerFactory.getLogger(MikutterJFXController.class);
@@ -68,6 +89,11 @@ public class MikutterJFXController implements Initializable {
         logger.debug("end setIcon.");
     }
 
+    /**
+     * サービスを設定する。
+     *
+     * 投稿機能を使用するために、PostBox に渡されます。
+     */
     public void setService(IRubyObject service) {
         logger.debug("start setService.");
         this.service = service;
