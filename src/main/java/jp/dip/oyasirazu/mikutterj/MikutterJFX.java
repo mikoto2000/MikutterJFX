@@ -98,6 +98,7 @@ public class MikutterJFX extends Application {
 
         // ListView に設定した ObservableList を取得する。
         controller = loader.getController();
+        controller.setApplication(this);
         controller.setRootStage(stage);
 
         // 適当にウィンドウ設定

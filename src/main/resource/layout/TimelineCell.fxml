@@ -31,10 +31,10 @@
     <VBox fx:id="extension">
         <GridPane fx:id="images" alignment="CENTER" hgap="8" vgap="8">
             <!-- TODO: リスト化的なことしたい -->
-            <ImageView fx:id="media1" />
-            <ImageView fx:id="media2" />
-            <ImageView fx:id="media3" />
-            <ImageView fx:id="media4" />
+            <ImageView fx:id="media1" onMouseClicked="#onMediaClick1" />
+            <ImageView fx:id="media2" onMouseClicked="#onMediaClick2" />
+            <ImageView fx:id="media3" onMouseClicked="#onMediaClick3" />
+            <ImageView fx:id="media4" onMouseClicked="#onMediaClick4" />
         </GridPane>
     </VBox>
 </VBox>

@@ -3,6 +3,7 @@ package jp.dip.oyasirazu.mikutterj;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,6 +22,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MikutterJFXController implements Initializable {
 
+    private Application application;
     private Stage rootStage;
     private IRubyObject service;
 
@@ -41,6 +43,18 @@ public class MikutterJFXController implements Initializable {
      */
     public void setRootStage(Stage stage) {
         this.rootStage = stage;
+    }
+
+    /**
+     * Application を設定する。
+     */
+    public void setApplication(Application application) {
+        logger.debug("start setApplication.");
+        this.application = application;
+        homeTimeline.setCellFactory((list) -> {
+            return new TimelineCell(application);
+        });
+        logger.debug("end setApplication.");
     }
 
     /**
