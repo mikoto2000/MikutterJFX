@@ -10,8 +10,11 @@
 <BorderPane xmlns="http://javafx.com/javafx"
     xmlns:fx="http://javafx.com/fxml"
     fx:controller="jp.dip.oyasirazu.mikutterj.TimelineController">
+    <top>
+        <Label fx:id="title" BorderPane.alignment="center" />
+    </top>
     <center>
-        <ListView fx:id="homeTimeline">
+        <ListView fx:id="timeline">
             <items>
                 <FXCollections fx:factory="observableArrayList" />
             </items>

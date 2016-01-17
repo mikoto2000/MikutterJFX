@@ -50,11 +50,16 @@ public class MikutterJFXController implements Initializable {
     /** ホームタイムライン */
     @FXML private TimelineController homeTimelineController;
 
+    /** 通知タイムライン */
+    @FXML private TimelineController mentionTimelineController;
+
     private static Logger logger = LoggerFactory.getLogger(MikutterJFXController.class);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         logger.debug("start MikutterJFXController initialize.");
+        homeTimelineController.setTitle("home timeline.");
+        mentionTimelineController.setTitle("mention timeline.");
     }
 
     /**
@@ -109,5 +114,15 @@ public class MikutterJFXController implements Initializable {
 
         homeTimelineController.addMessage(message, media_urls);
         logger.debug("end addMessage.");
+    }
+
+    /**
+     * mention timeline にメッセージを追加する。
+     */
+    public void addMention(IRubyObject message, String[] media_urls) {
+        logger.debug("start addMention.");
+
+        mentionTimelineController.addMessage(message, media_urls);
+        logger.debug("end addMention.");
     }
 }

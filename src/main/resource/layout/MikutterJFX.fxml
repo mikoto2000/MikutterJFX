@@ -14,6 +14,9 @@
         <fx:include fx:id="postbox" source="PostBox.fxml"/>
     </top>
     <center>
-        <fx:include fx:id="homeTimeline" source="Timeline.fxml"/>
+        <fx:include fx:id="homeTimeline" source="Timeline.fxml" />
     </center>
+    <right>
+        <fx:include fx:id="mentionTimeline" source="Timeline.fxml" />
+    </right>
 </BorderPane>

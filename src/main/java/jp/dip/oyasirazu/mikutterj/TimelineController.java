@@ -4,14 +4,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
 
-import org.jruby.RubyString;
+
 import org.jruby.RubySymbol;
 import org.jruby.runtime.builtin.IRubyObject;
 import org.slf4j.Logger;
@@ -30,16 +28,21 @@ public class TimelineController implements Initializable {
     private Application application;
 
     /**
-     * ホームタイムライン。
+     * タイムライン。
      */
-    @FXML ListView<Message> homeTimeline;
+    @FXML ListView<Message> timeline;
+
+    /**
+     * タイムラインのタイトル。
+     */
+    @FXML private Label title;
 
     private static Logger logger = LoggerFactory.getLogger(MikutterJFXController.class);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         logger.debug("start initialize");
-        homeTimeline.setCellFactory((list) -> {
+        timeline.setCellFactory((list) -> {
             return new TimelineCell();
         });
         logger.debug("end initialize");
@@ -51,7 +54,7 @@ public class TimelineController implements Initializable {
     public void setApplication(Application application) {
         logger.debug("start setApplication.");
         this.application = application;
-        homeTimeline.setCellFactory((list) -> {
+        timeline.setCellFactory((list) -> {
             return new TimelineCell(application);
         });
         logger.debug("end setApplication.");
@@ -65,7 +68,7 @@ public class TimelineController implements Initializable {
 
         IRubyObject user = callMethod(message, "user");
 
-        homeTimeline.getItems().add(
+        timeline.getItems().add(
                 new Message(getValue(user, "profile_image_url").toString(),
                     getValue(user, "idname").toString(),
                     getValue(user, "name").toString(),
@@ -92,6 +95,20 @@ public class TimelineController implements Initializable {
      */
     private IRubyObject getValue(IRubyObject object, String key) {
         return object.callMethod(object.getRuntime().getCurrentContext(), "get", RubySymbol.newSymbol(object.getRuntime(), key));
+    }
+
+    /**
+     * タイムラインのタイトルを設定する。
+     */
+    public void setTitle(String titleStr) {
+        title.setText(titleStr);
+    }
+
+    /**
+     * タイムラインのタイトルを取得する。
+     */
+    public String setTitle() {
+        return title.getText();
     }
 }
 
